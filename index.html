@@ -14,6 +14,19 @@
             align-items: center;
             height: 100vh;
             margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .heart {
+            position: absolute;
+            color: #ff6666;
+            font-size: 24px;
+            animation: float 6s infinite linear;
+            opacity: 0.7;
+        }
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); }
+            100% { transform: translateY(-100px) rotate(360deg); }
         }
         .note {
             background-color: #fff;
@@ -23,25 +36,61 @@
             max-width: 400px;
             text-align: center;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeIn 2s ease-in;
+            position: relative;
+            z-index: 1;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         .note h1 {
             color: #ff6666;
         }
         .note p {
             line-height: 1.6;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid #ff6666;
+            animation: typewriter 4s steps(40, end) 1s both;
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
         }
     </style>
 </head>
 <body>
+    <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
+    <div class="heart" style="left: 20%; animation-delay: 1s;">💖</div>
+    <div class="heart" style="left: 30%; animation-delay: 2s;">💕</div>
+    <div class="heart" style="left: 40%; animation-delay: 3s;">❤️</div>
+    <div class="heart" style="left: 50%; animation-delay: 4s;">💖</div>
+    <div class="heart" style="left: 60%; animation-delay: 5s;">💕</div>
+    <div class="heart" style="left: 70%; animation-delay: 6s;">❤️</div>
+    <div class="heart" style="left: 80%; animation-delay: 7s;">💖</div>
+    <div class="heart" style="left: 90%; animation-delay: 8s;">💕</div>
     <div class="note">
         <h1>My Dearest,</h1>
-        <p>
-            In the quiet moments of the day, when the world fades away,<br>
-            I find myself thinking of you. Your smile lights up my life<br>
-            like the stars light up the night sky. You are my everything,<br>
-            my love, my heart.
+        <p id="message">
+            In the quiet moments of the day, when the world fades away, I find myself thinking of you. Your smile lights up my life like the stars light up the night sky. You are my everything, my love, my heart.
         </p>
         <p>Forever yours,<br>[Wisdom Eboma]</p>
     </div>
+    <script>
+        // Typewriter effect for the message
+        const message = document.getElementById('message');
+        const text = message.textContent;
+        message.textContent = '';
+        let i = 0;
+        function typeWriter() {
+            if (i < text.length) {
+                message.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        setTimeout(typeWriter, 1000); // Start after fade-in
+    </script>
 </body>
 </html>

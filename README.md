@@ -1,6 +1,12 @@
 # Love-Note
 
-A simple web page that displays a heartfelt love note.
+A simple web page that displays a heartfelt love note with animations.
+
+## Features
+
+- Fade-in animation for the note
+- Typewriter effect for the message
+- Floating heart emojis in the background
 
 ## Usage
 
@@ -13,7 +19,7 @@ To view the love note in your browser:
 
 2. Open your browser and go to: http://localhost:8000
 
-This will display the romantic message as a styled web page.
+This will display the romantic message as an animated web page.
 
 ## Alternative: GitHub Pages
 
