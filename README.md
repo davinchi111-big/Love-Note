@@ -9,6 +9,7 @@ A simple web page that displays a heartfelt love note with animations and a beau
 - Floating heart emojis
 - Garden background with swaying flowers
 - Sparkling engagement ring
+- Drifting clouds across the sky
 
 ## Usage
 
