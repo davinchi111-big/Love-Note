@@ -49,14 +49,6 @@
         }
         .note p {
             line-height: 1.6;
-            overflow: hidden;
-            white-space: nowrap;
-            border-right: 2px solid #ff6666;
-            animation: typewriter 4s steps(40, end) 1s both;
-        }
-        @keyframes typewriter {
-            from { width: 0; }
-            to { width: 100%; }
         }
     </style>
 </head>
@@ -82,12 +74,18 @@
         const message = document.getElementById('message');
         const text = message.textContent;
         message.textContent = '';
+        message.style.borderRight = '2px solid #ff6666';
         let i = 0;
         function typeWriter() {
             if (i < text.length) {
                 message.textContent += text.charAt(i);
                 i++;
-                setTimeout(typeWriter, 100);
+                setTimeout(typeWriter, 50); // Faster typing
+            } else {
+                // Blink cursor
+                setInterval(() => {
+                    message.style.borderRight = message.style.borderRight ? '' : '2px solid #ff6666';
+                }, 500);
             }
         }
         setTimeout(typeWriter, 1000); // Start after fade-in
