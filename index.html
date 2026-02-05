@@ -39,9 +39,41 @@
             0%, 100% { transform: rotate(-5deg); }
             50% { transform: rotate(5deg); }
         }
-        @keyframes sparkle {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
+        .cloud {
+            position: absolute;
+            top: 10%;
+            width: 100px;
+            height: 50px;
+            background: white;
+            border-radius: 50px;
+            opacity: 0.8;
+            animation: drift 20s linear infinite;
+        }
+        .cloud:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+        }
+        .cloud:after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 50%;
+        }
+        .cloud:nth-child(1) { left: -100px; animation-delay: 0s; }
+        .cloud:nth-child(2) { left: -100px; animation-delay: 10s; top: 15%; }
+        @keyframes drift {
+            0% { transform: translateX(-100px); }
+            100% { transform: translateX(100vw); }
         }
         .note {
             background-color: #fff;
@@ -68,6 +100,8 @@
     </style>
 </head>
 <body>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
     <div class="heart" style="left: 10%; animation-delay: 0s;">❤️</div>
     <div class="heart" style="left: 20%; animation-delay: 1s;">💖</div>
     <div class="heart" style="left: 30%; animation-delay: 2s;">💕</div>
